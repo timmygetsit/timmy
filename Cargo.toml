@@ -1,0 +1,58 @@
+[package]
+name = "timmy"
+version = "0.1.0"
+edition = "2021"
+authors = ["TIMMY Contributors"]
+description = "AI Agent Resource Manager for discovering, monitoring, and safely managing background processes, services, and ports"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/timmygetsit/timmy"
+keywords = ["ai-agent", "process-manager", "tui", "macos", "developer-tools"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+# TUI and Terminal events
+ratatui = "0.29"
+crossterm = { version = "0.28", features = ["event-stream"] }
+
+# System and Process monitoring
+sysinfo = "0.33"
+
+# CLI Parsing
+clap = { version = "4.5", features = ["derive", "cargo"] }
+
+# Configuration
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+
+# Local Storage
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+# System paths
+directories = "5.0"
+
+# Error Handling & Utilities
+thiserror = "2.0"
+anyhow = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+
+# POSIX / macOS system APIs
+libc = "0.2"
+signal-hook = "0.3"
+bollard = "0.21.1"
+tokio = { version = "1.54.1", features = ["rt", "time", "macros"] }
+futures-util = "0.3"
+sha2 = "0.10"
+plist = "1.10"
+
+[dev-dependencies]
+tempfile = "3.17"
+
+[[bin]]
+name = "timmy"
+path = "src/main.rs"
+
+[lib]
+name = "timmy"
+path = "src/lib.rs"
